@@ -1,0 +1,6 @@
+{
+    "version": "2018-05-29",
+    "statements": [
+		"SELECT Notification.*, CadetToNotification.Viewed FROM Notification JOIN CadetToNotification ON Notification.Id = CadetToNotification.NotificationId JOIN Cadet ON CadetToNotification.CadetId = Cadet.Id WHERE Cadet.CognitoUsername = '$ctx.identity.username';"
+    ]
+}

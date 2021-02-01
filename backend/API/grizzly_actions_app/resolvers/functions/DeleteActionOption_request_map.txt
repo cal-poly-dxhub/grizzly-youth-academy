@@ -1,0 +1,6 @@
+{
+    "statements": [
+        "INSERT INTO ActionOptionDeletions(ActionOptionId, CadetId) VALUES($ctx.args.Id, $ctx.prev.result.CadetId);",
+        "SELECT * FROM ActionOption WHERE Id = $ctx.args.Id;"
+    ]
+}

@@ -1,0 +1,3 @@
+#set( $cadet = $util.parseJson($ctx.stash.Cadet) )
+$util.qr($cadet.put("MediaURL", $ctx.source.Info.MediaURL))
+$util.toJson({"Info": $cadet, "Staff": $util.parseJson($ctx.stash.Staff), "Ranking": $util.parseJson($ctx.stash.Ranking)})

@@ -1,0 +1,5 @@
+{
+    "statements": [
+        "UPDATE Cadet SET SharePoints = $ctx.args.input.SharePoints WHERE CognitoUsername = '$ctx.identity.username'"
+    ]
+}

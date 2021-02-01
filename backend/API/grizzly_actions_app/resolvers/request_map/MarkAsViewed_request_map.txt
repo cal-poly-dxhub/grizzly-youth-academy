@@ -1,0 +1,7 @@
+{
+    "version": "2018-05-29",
+    "statements": [
+    	"UPDATE CadetToNotification JOIN Cadet ON CadetToNotification.CadetId = Cadet.Id SET Viewed = NOW() WHERE Cadet.CognitoUsername = '$context.identity.username' AND NotificationId = $ctx.args.NotificationId AND Viewed IS NULL;",
+        "SELECT Notification.*, CadetToNotification.Viewed FROM Notification JOIN CadetToNotification ON Notification.Id = CadetToNotification.NotificationId JOIN Cadet ON CadetToNotification.CadetId = Cadet.Id WHERE Notification.Id = $ctx.args.NotificationId AND Cadet.CognitoUsername = '$context.identity.username';"
+    ]
+}

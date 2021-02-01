@@ -1,0 +1,5 @@
+{
+    "statements": [
+		"SELECT Staff.Id, Staff.FirstName, Staff.LastName, StaffType.Name AS StaffType, Phone, Email FROM Staff JOIN StaffType ON Staff.StaffType = StaffType.Id JOIN CadetToStaff ON Staff.Id = CadetToStaff.StaffId JOIN Cadet ON Cadet.Id = CadetToStaff.CadetId WHERE Cadet.CognitoUsername = '$ctx.identity.username';"
+    ]
+}

@@ -1,0 +1,21 @@
+#set( $action_option_stmt = "SELECT ActionOption.Id,
+									ActionOption.GoalId,
+									ActionOption.Title,
+									ActionOption.Description,
+									ActionOption.MediaURL,
+									ActionOption.PointValue
+							FROM ActionOption
+							JOIN Cadet ON Cadet.CognitoUsername = '$ctx.identity.username'
+							WHERE (ActionOption.CadetId IS NULL OR ActionOption.CadetId = Cadet.Id)
+								AND (ActionOption.Saved IS NULL OR ActionOption.Saved = True)
+								AND ActionOption.Id NOT IN (SELECT ActionOptionId FROM ActionOptionDeletions WHERE ActionOptionDeletions.CadetId = Cadet.Id)" )
+#if( $ctx.args.get("input") && $ctx.args.input.get('GoalId') )
+	#set( $action_option_stmt = "$action_option_stmt AND ActionOption.GoalId = $ctx.args.input.GoalId" )
+#end
+
+{
+    "version": "2018-05-29",
+    "statements": [
+        $util.toJson($action_option_stmt)
+    ]
+}

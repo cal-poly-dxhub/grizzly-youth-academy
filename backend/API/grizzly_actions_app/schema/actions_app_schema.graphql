@@ -1,0 +1,225 @@
+﻿type Mutation @aws_cognito_user_pools {
+	#Explicitly deny a specific datetime value from appearing in the ListAssignedActions API
+	DeleteAssignedActionDate(input: DeleteAssignedActionDate): AssignedAction
+
+	#Modify the schedule of an AssignedAction
+	UpdateActionSchedule(input: UpdateActionSchedule): AssignedAction
+
+	#Apply a schedule to an ActionOption and assign this combination to the user
+	AssignActionOption(input: AssignActionOption): AssignedAction
+
+	#Apply a schedule to a user-defined ActionOption and assign this combination to the user
+	AssignCustomAction(input: AssignCustomAction): AssignedAction
+
+	#Specify a datetime value associated with an AssignedAction as complete
+	CompleteAssignedAction(input: CompleteAssignedAction): AssignedAction
+
+	#Remove an ActionOption from the user's custom set of ActionOptions
+	DeleteActionOption(Id: Int!): ActionOption
+
+	#Modify attributes (SharePoints) of a user
+	UpdateCadet(input: UpdateCadet): Cadet
+
+	#Remove a scheduled ActionOption from the user's ActionTemplate (remove all instances from appearing in ListAssignedActions)
+	DeleteActionFromTemplate(input: DeleteActionFromTemplate): AssignedAction
+	
+	#Modify attributes (Viewed) of a Notification (datetime value fully-managed by backend)
+	MarkAsViewed(NotificationId: Int!): Notification
+}
+
+input DeleteAssignedActionDate {
+	TemplateId: Int!
+	AssignmentDateTime: String!
+}
+
+input UpdateActionSchedule {
+	TemplateId: Int!
+	DefaultTime: String!
+	DefaultDate: String
+	DefaultDaysOfWeek: String
+	DefaultWeeklyFrequency: Int
+	DefaultDayOfMonth: Int
+	DefaultMonthlyFrequency: Int
+}
+
+input AssignActionOption {
+	ActionOptionId: Int!
+	DefaultTime: String!
+	DefaultDate: String
+	DefaultDaysOfWeek: String
+	DefaultWeeklyFrequency: Int
+	DefaultDayOfMonth: Int
+	DefaultMonthlyFrequency: Int
+}
+
+input AssignCustomAction {
+	GoalId: Int!
+	Title: String!
+	Description: String
+	MediaURL: String
+	Saved: Boolean
+	DefaultTime: String!
+	DefaultDate: String
+	DefaultDaysOfWeek: String
+	DefaultWeeklyFrequency: Int
+	DefaultDayOfMonth: Int
+	DefaultMonthlyFrequency: Int
+}
+
+input CompleteAssignedAction {
+	TemplateId: Int!
+	AssignmentDateTime: String!
+	Evidence: String!
+}
+
+input UpdateCadet {
+	SharePoints: Boolean
+}
+
+input DeleteActionFromTemplate {
+	TemplateId: Int!
+}
+
+type Query @aws_cognito_user_pools {
+	#List users, ordered by points, that agreed to SharePoints
+	ListRankedCadets(input: CadetFilter): [Cadet]
+
+	#List staff associated to the user
+	ListStaff: [Staff]
+
+	#List AssignedActions from the user's ActionTemplate
+	ListAssignedActions(month: Int!, year: Int!): [AssignedAction]
+
+	#List customized ActionOptions
+	ListActionOptions(input: ActionOptionFilter): [ActionOption]
+
+	#Return the schedule associated with the AssignedAction on the users ActionTemplate
+	GetAssignedSchedule(TemplateId: Int!): Schedule
+	
+	GetCadetInfo: CadetInfo
+	ListCompletedActions: [AssignedAction]
+	ListGoals: [Goal]
+	ListClasses: [Class]
+	ListPlatoons: [Platoon]
+	ListNotifications: [Notification]
+	ListResources(input: ResourceFilter): [Resource]
+	ListResourceCategories: [ResourceCategory]
+	ListEvents: [Event]
+}
+
+input CadetFilter {
+	PlatoonId: Int
+	ClassId: Int
+}
+
+input ResourceFilter {
+	CategoryId: Int
+}
+
+input ActionOptionFilter {
+	GoalId: Int
+}
+
+type Cadet @aws_cognito_user_pools {
+	Id: Int!
+	FirstName: String
+	LastName: String!
+	Class: String!
+	Platoon: String!
+	Points: Int!
+	SharePoints: Boolean!
+	MediaURL: String
+}
+
+type Resource @aws_cognito_user_pools {
+	Id: Int!
+	Title: String!
+	Category: String!
+	Description: String
+	MediaURL: String
+}
+
+type Staff @aws_cognito_user_pools {
+	Id: Int!
+	FirstName: String
+	LastName: String!
+	StaffType: String!
+	Phone: String
+	Email: String
+}
+
+type ActionOption @aws_cognito_user_pools {
+	Id: Int!
+	GoalId: Int!
+	Title: String!
+	Description: String
+	MediaURL: String
+	PointValue: Int!
+}
+
+type AssignedAction @aws_cognito_user_pools {
+	TemplateId: Int!
+	Action: ActionOption
+	CadetId: Int
+	AssignedDates: [String]
+	CompletedDates: [String]
+}
+
+type CadetInfo @aws_cognito_user_pools {
+	Info: Cadet
+	Staff: [Staff]
+	Ranking: Ranking
+}
+
+type Class @aws_cognito_user_pools {
+	Id: Int!
+	Name: String!
+}
+
+type Goal @aws_cognito_user_pools {
+	Id: Int!
+	Name: String!
+}
+
+type Event @aws_cognito_user_pools {
+	Id: Int!
+	Title: String!
+	Description: String
+	EventDate: String!
+	CreationDateTime: String!
+}
+
+type Notification @aws_cognito_user_pools {
+	Id: Int!
+	Title: String!
+	Description: String
+	CreationDateTime: String!
+	MediaURL: String
+	Viewed: String
+}
+
+type Platoon @aws_cognito_user_pools {
+	Id: Int!
+	Name: String!
+}
+
+type Ranking @aws_cognito_user_pools {
+	ClassRank: Int!
+	MaxClassRank: Int!
+	PlatoonRank: Int!
+	MaxPlatoonRank: Int!
+}
+
+type ResourceCategory @aws_cognito_user_pools {
+	Id: Int!
+	Name: String!
+}
+
+type Schedule @aws_cognito_user_pools {
+	DefaultTime: String!
+	DefaultDate: String
+	DefaultDaysOfWeek: String
+	DefaultWeeklyFrequency: Int
+	DefaultDayOfMonth: Int
+	DefaultMonthlyFrequency: Int
+}

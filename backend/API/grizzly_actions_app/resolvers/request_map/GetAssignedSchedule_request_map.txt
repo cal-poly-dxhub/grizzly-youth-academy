@@ -1,0 +1,40 @@
+#set( $sql_stmt = "SELECT
+                            		IF(TemplateUpdates.TemplateId = ActionTemplate.Id,
+                            			TemplateUpdates.DefaultTime, 
+                                        ActionTemplate.DefaultTime)
+                                        AS DefaultTime,
+                            		IF(TemplateUpdates.TemplateId = ActionTemplate.Id,
+                            			TemplateUpdates.DefaultDate,
+                                        ActionTemplate.DefaultDate)
+                                        AS DefaultDate,
+                            		IF(TemplateUpdates.TemplateId = ActionTemplate.Id,
+                            			TemplateUpdates.DefaultDaysOfWeek,
+                            			ActionTemplate.DefaultDaysOfWeek)
+                            			AS DefaultDaysOfWeek,
+                            		IF(TemplateUpdates.TemplateId = ActionTemplate.Id,
+                            			TemplateUpdates.DefaultWeeklyFrequency,
+                            			ActionTemplate.DefaultWeeklyFrequency)
+                                        AS DefaultWeeklyFrequency,
+                                    IF(TemplateUpdates.TemplateId = ActionTemplate.Id,
+                            			TemplateUpdates.DefaultDayOfMonth,
+                                        ActionTemplate.DefaultDayOfMonth)
+                                        AS DefaultDayOfMonth,
+                            		IF(TemplateUpdates.TemplateId = ActionTemplate.Id,
+                            			TemplateUpdates.DefaultMonthlyFrequency,
+                            			ActionTemplate.DefaultMonthlyFrequency)
+                                        AS DefaultMonthlyFrequency
+                            FROM ActionTemplate
+                            JOIN Cadet ON Cadet.CognitoUsername = '$ctx.identity.username'
+                            LEFT JOIN TemplateUpdates ON ActionTemplate.Id = TemplateUpdates.TemplateId AND TemplateUpdates.CadetId = Cadet.Id
+                            WHERE (ActionTemplate.CadetId IS NULL OR ActionTemplate.CadetId = Cadet.Id) AND
+                            ActionTemplate.Id = $ctx.args.TemplateId AND
+                            ActionTemplate.Id NOT IN   (SELECT TemplateId
+                                                        FROM TemplateDeletions
+                                                        WHERE CadetId = Cadet.Id);" )
+
+{
+    "version": "2018-05-29",
+    "statements": [
+        $util.toJson($sql_stmt)
+    ]
+}

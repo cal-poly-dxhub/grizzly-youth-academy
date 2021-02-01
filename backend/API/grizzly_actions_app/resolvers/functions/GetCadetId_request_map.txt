@@ -1,0 +1,5 @@
+{
+    "statements": [
+    	"SELECT Id as CadetId FROM Cadet WHERE CognitoUsername = '$ctx.identity.username';"
+    ]
+}

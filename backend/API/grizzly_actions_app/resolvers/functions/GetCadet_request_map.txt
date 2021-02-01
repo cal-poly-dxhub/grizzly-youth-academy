@@ -1,0 +1,5 @@
+{
+    "statements": [
+        "SELECT Cadet.Id, FirstName, LastName, Class.Name AS Class, Platoon.Name AS Platoon, (SELECT COALESCE(SUM(ActionOption.PointValue), 0) from CompletedActions JOIN ActionTemplate ON ActionTemplate.Id = CompletedActions.TemplateId JOIN ActionOption ON ActionOption.Id = ActionTemplate.ActionOptionId WHERE CompletedActions.CadetId = Cadet.Id) AS Points, SharePoints FROM Cadet JOIN Platoon ON Cadet.PlatoonId = Platoon.Id JOIN Class ON Cadet.ClassId = Class.Id WHERE Cadet.CognitoUsername = '$ctx.identity.username';"
+    ]
+}

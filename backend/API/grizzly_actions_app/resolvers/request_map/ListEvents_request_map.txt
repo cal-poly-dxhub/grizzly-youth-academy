@@ -1,0 +1,6 @@
+{
+    "version": "2018-05-29",
+    "statements": [
+        "SELECT Event.* FROM Event JOIN CadetToEvent ON Event.Id = CadetToEvent.EventId JOIN Cadet ON CadetToEvent.CadetId = Cadet.Id WHERE Cadet.CognitoUsername = '$ctx.identity.username';"
+    ]
+}

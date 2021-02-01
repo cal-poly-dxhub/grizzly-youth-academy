@@ -1,0 +1,6 @@
+#if( $ctx.result.get("errorMessage") )
+	$util.error($ctx.result.errorMessage)
+#end
+
+$util.qr($ctx.stash.put("Ranking", $util.toJson($context.result)))
+$util.toJson($context.result)

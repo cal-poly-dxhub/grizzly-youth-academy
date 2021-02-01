@@ -1,0 +1,9 @@
+#set( $sql_stmt = "SELECT Resource.Id, Title, ResourceCategory.Name as Category, Description FROM Resource JOIN ResourceCategory on Resource.CategoryId = ResourceCategory.Id JOIN Cadet ON Cadet.CognitoUsername = '$ctx.identity.username' WHERE (Resource.PointThreshold IS NULL OR Resource.PointThreshold <= (SELECT COALESCE(SUM(ActionOption.PointValue), 0) from CompletedActions JOIN ActionTemplate ON ActionTemplate.Id = CompletedActions.TemplateId JOIN ActionOption ON ActionOption.Id = ActionTemplate.ActionOptionId WHERE CompletedActions.CadetId = Cadet.Id AND CompletedActions.Evidence != ''))" )
+
+#if( $ctx.args.get("input") && $ctx.args.input.get("CategoryId") )
+	#set( $sql_stmt = "$sql_stmt AND Resource.CategoryId = $ctx.args.input.CategoryId;" )
+#end
+{
+    "version": "2018-05-29",
+    "statements": [$util.toJson($sql_stmt)]
+}

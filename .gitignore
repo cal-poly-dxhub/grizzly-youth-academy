@@ -1,0 +1,3 @@
+documents/*
+
+backend/lambda/db_config.py

@@ -1,0 +1,5 @@
+{
+    "statements": [
+        "SELECT ${ctx.stash.Table}.* FROM ${ctx.stash.Table} JOIN Cadet ON Cadet.CognitoUsername = '$ctx.identity.username';"
+    ]
+}
