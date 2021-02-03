@@ -1,4 +1,4 @@
-# Grizzly Actionable Goals Application Backend
+# Grizzly Actionable Goals Application Backend Architecture
 
 ## General Overview
 The basis of the action-planning feature of this application is referred to as an Action Template. Information on when an action should be scheduled, and possibly how often it should be repeated, are stored in the database. There are options for generally assigned actions, as well as user-created actions to appear on a user's calendar.
