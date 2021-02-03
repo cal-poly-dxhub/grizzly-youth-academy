@@ -1,3 +1,6 @@
 documents/*
 
 backend/lambda/db_config.py
+
+grizzly-app-master/amplify/team-provider-info.json
+grizzly-app-master/amplify/backend/backend-config.json
