@@ -61,7 +61,7 @@ function ProfileComponent() {
   return (
     <ScrollView style={{ padding: 20 }}>
       <View style={{ flexDirection: "row", paddingBottom: 20 }}>
-        <Image style={{ height: 120, width: 120, borderRadius: 10 }} source={Info.MediaURL ? {uri: `${Info.MediaURL}`} : {DefaultProfilePicture}} />
+        <Image style={{ height: 120, width: 120, borderRadius: 10 }} source={Info.MediaURL ? {uri: `${Info.MediaURL}`} : DefaultProfilePicture} />
         <View style={{ paddingLeft: 10, justifyContent: "center" }}>
           <Text style={{ paddingBottom: 0, fontWeight: "600", fontSize: 20 }}>
             {`${Info.FirstName} ${Info.LastName}`}
