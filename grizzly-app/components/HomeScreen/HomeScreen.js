@@ -28,34 +28,9 @@ export default function HomeScreen(props) {
   const insets = useSafeAreaInsets();
   const dispatch = useDispatch();
 
-  const updateNotification = React.useCallback(async () => {
-    const listNotifs = await ListNotifications();
-    dispatch({ type: "SET_NOTIFICATION", payload: listNotifs.sort((a, b) => (a.Viewed > b.Viewed ? 1 : -1)) });
-  }, []);
-
-  const updateRanking = React.useCallback(async () => {
-    const ranks = await getRankedCadets();
-    dispatch({ type: "SET_RANKING", payload: ranks.sort((a, b) => (a.Points > b.Points ? -1 : 1)) });
-  }, []);
-
-  const updateCadetInfo = React.useCallback(async () => {
-    const cadetInfo = await getCadetInfo();
-    dispatch({ type: "SET_CADET_INFO", payload: cadetInfo });
-  }, []);
-
-  const updateResourceCategories = React.useCallback(async () => {
-    const listResourceCat = await ListResourceCategories();
-    dispatch({ type: "SET_RESOURCE_CATEGORY", payload: listResourceCat });
-  }, []);
-
   React.useEffect(() => {
     props.changeColor("#8B0E04", "light-content");
     dispatch({ type: "SET_INSETS", payload: insets });
-
-    updateRanking();
-    updateNotification();
-    updateCadetInfo();
-    updateResourceCategories();
 
     return () => {
       props.changeColor("#fff", "dark-content");
@@ -91,11 +66,11 @@ export default function HomeScreen(props) {
               inactiveTintColor: "#8B0E04",
               keyboardHidesTabBar: true
             }}>
-            <Tab.Screen name="Calendar" component={CalendarTab} />
+            <Tab.Screen name="Profile" component={ProfileTab} />
             <Tab.Screen name="Community" component={CommunityTab} />
+            <Tab.Screen name="Calendar" component={CalendarTab} />
             <Tab.Screen name="Resources" component={ResourcesTab} />
             <Tab.Screen name="Notifications" component={NotificationsTab} />
-            <Tab.Screen name="Profile" component={ProfileTab} />
           </Tab.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

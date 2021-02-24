@@ -16,6 +16,7 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 import { store } from "./redux";
 import HomeScreen from "./components/HomeScreen/HomeScreen";
+import LoadingScreen from "./components/HomeScreen/LoadingScreen";
 import CustomLogin from "./components/LoginScreen/CustomLogin";
 
 Amplify.configure({
@@ -26,6 +27,14 @@ Amplify.configure({
 });
 
 export function App(props) {
+
+  const [loading, setLoading] = useState(true);
+  const waitPeriodInMilli = 6000;
+
+  useEffect(() => {
+      setTimeout(() => setLoading(false), waitPeriodInMilli)
+    }, []);
+
   useEffect(() => {
     (async () => {
       await Font.loadAsync({
@@ -36,11 +45,13 @@ export function App(props) {
   }, []);
 
   if (props.authState === "signedIn") {
-    return (
+    return loading == false ? (
       <Provider store={store}>
         <HomeScreen changeColor={props.changeColor} />
-      </Provider>
-    );
+      </Provider>) : (
+      <Provider store={store}>
+      <LoadingScreen changeColor={props.changeColor} />
+    </Provider>);
   }
   return null;
 }
