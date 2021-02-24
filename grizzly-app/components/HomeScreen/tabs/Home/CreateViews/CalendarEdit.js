@@ -114,7 +114,7 @@ export default function CalendarEdit(props) {
           )} */}
           {localRepeatOptions.repeat === "Repeat" && (
             <DropDownPicker
-              items={["Week", "Month"].map((item) => { //add  "Day" option here
+              items={["Week", "Month"].map((item) => {
                 return { value: item, label: item };
               })}
               style={{ backgroundColor: "#fafafa", width: 85 }}
@@ -123,7 +123,7 @@ export default function CalendarEdit(props) {
               onChangeItem={(item) => {
                 setLocalRepeatOptions({
                   ...localRepeatOptions,
-                  type: item.va
+                  type: item.value
                 });
               }}
             />
