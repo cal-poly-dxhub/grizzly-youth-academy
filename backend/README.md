@@ -133,7 +133,7 @@ lambda_request_map.txt -> generic_response_map.txt
 empty_request_map.txt -> (QueryStaff) -> generic_response_map.txt
 
 *ListResources - Data Source 1* \
-ListResources_request_map.txt -> ListResources_response_map.txt
+ListResources_request_map.txt -> query_list_response_map.txt
 
 *ListResourceCategories - Pipeline* \
 ListResourceCategories_request_map.txt -> (QueryList) -> generic_response_map.txt
@@ -170,9 +170,6 @@ ListNotifications_request_map.txt -> query_list_response_map.txt
 
 #### Types
 This section is specific to resolvers that are tied to an *attribute* for a given Type in the schema. The result of this resolver is retrieved by the APIs that return this Type, but must be handled at a level lower than the above resolvers. Each of the below definitions are of the form '*[Type].[Attribute] - [Data Source]*'
-
-*Resource.MediaURL - Data Source 4*
-lambda_request_map.txt -> generic_response_map.txt
 
 *Cadet.MediaURL - Data Source 4*
 lambda_request_map.txt -> generic_response_map.txt
