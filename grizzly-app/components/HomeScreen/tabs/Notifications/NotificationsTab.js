@@ -84,7 +84,7 @@ function NotificationDetails({ navigation, route }) {
       ) : (
         <View>
           <Text style={{ fontWeight: "700", fontSize: 20 }}>{item.Title}</Text>
-          <Text>{moment(item.CreationDateTime).format("MM/DD/YYYY")}</Text>
+          <Text>{moment(item.CreationDateTime).format("MM/DD/YYYY h:mm:ss a")}</Text>
           <Text style={{ marginTop: 10 }}>{item.Description}</Text>
           {item.MediaURL && (
             <TouchableOpacity
