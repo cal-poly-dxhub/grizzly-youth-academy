@@ -227,7 +227,7 @@ DefaultWeeklyFrequency: ${repeatOptions.occurance}, `
                     route.params.selectedMonthYear.month,
                     route.params.selectedMonthYear.year
                   );
-                  navigation.navigate("Home");
+                  navigation.navigate("Calendar");
                   setLoading(false);
                 }}
                 text="Delete only this action"
@@ -253,7 +253,7 @@ DefaultWeeklyFrequency: ${repeatOptions.occurance}, `
                       route.params.selectedMonthYear.month,
                       route.params.selectedMonthYear.year
                     );
-                    navigation.navigate("Home");
+                    navigation.navigate("Calendar");
                     setLoading(false);
                   }}>
                   <Text style={{ color: "red" }}>Remove all repeats</Text>

@@ -212,7 +212,7 @@ export default function CustomTask(prop) {
                 await API.graphql({ query: customActionMutation, authMode: "AMAZON_COGNITO_USER_POOLS" });
                 await updateReduxStateTasks(dispatch, month, year);
                 setLoading(false);
-                prop.navigation.reset({ index: 0, routes: [{ name: "Home" }] });
+                prop.navigation.reset({ index: 0, routes: [{ name: "Calendar" }] });
               }}>
               {!loading ? (
                 <Ionicons name="ios-add-circle" size={30} color="#0054A4" />

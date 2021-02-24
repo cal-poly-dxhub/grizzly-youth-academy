@@ -112,7 +112,7 @@ export default function ImagePickerExample({ navigation, route }) {
             dispatch({ type: "SET_RANKING", payload: ranks.sort((a, b) => (a.Points > b.Points ? -1 : 1)) });
             getCompletedActions(dispatch);
             setLoading(false);
-            navigation.navigate("Home");
+            navigation.navigate("Calendar");
           }}>
           <Text style={{ fontWeight: "500" }}>Skip verification</Text>
         </TouchableOpacity>
@@ -155,7 +155,7 @@ export default function ImagePickerExample({ navigation, route }) {
               dispatch({ type: "SET_RANKING", payload: ranks.sort((a, b) => (a.Points > b.Points ? -1 : 1)) });
               getCompletedActions(dispatch);
               setLoading(false);
-              navigation.navigate("Home");
+              navigation.navigate("Calendar");
             }}>
             <Text style={{ color: "white", fontWeight: "500" }}>Submit picture</Text>
           </TouchableOpacity>
