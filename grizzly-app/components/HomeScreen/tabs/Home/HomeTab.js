@@ -32,7 +32,7 @@ const stackNavScreenOpt = {
 export default function HomeTab() {
   return (
     <StackNavigator.Navigator mode="modal">
-      <StackNavigator.Screen name="Home" component={HomeComponent} options={stackNavScreenOpt} />
+      <StackNavigator.Screen name="Calendar" component={HomeComponent} options={stackNavScreenOpt} />
       <StackNavigator.Screen name="Add Action" component={AddComponent} options={stackNavScreenOpt} />
       <StackNavigator.Screen
         name="New Custom Task"

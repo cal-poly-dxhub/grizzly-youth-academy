@@ -62,8 +62,8 @@ export default function TodoItem(props) {
       <View style={[style.container, { backgroundColor: goalColor(item.GoalId) }]}>
         {!props.hideCompleteButton && (
           <Ionicons
-            name={item.CompletionDate ? "ios-checkmark-circle" : "ios-checkmark-circle-outline"}
-            size={20}
+            name={item.CompletionDate ? "ios-checkmark-circle" : "ios-remove-circle-outline"}
+            size={30}
             color={"rgb(242,242,242)"}
             onPress={async () => {
               navigation.navigate("Verification", {

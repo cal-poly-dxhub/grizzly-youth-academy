@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import { useSafeAreaInsets, SafeAreaProvider } from "react-native-safe-area-context";
 
-import HomeTab from "./tabs/Home/HomeTab";
+import CalendarTab from "./tabs/Home/HomeTab";
 import CommunityTab from "./tabs/Community/CommunityTab";
 import ResourcesTab from "./tabs/Resources/ResourcesTab";
 import NotificationsTab from "./tabs/Notifications/NotificationsTab";
@@ -71,8 +71,8 @@ export default function HomeScreen(props) {
               tabBarIcon: ({ focused, color, size }) => {
                 let iconName;
 
-                if (route.name === "Home") {
-                  iconName = "ios-home";
+                if (route.name === "Calendar") {
+                  iconName = "ios-calendar";
                 } else if (route.name === "Community") {
                   iconName = "ios-people";
                 } else if (route.name === "Resources") {
@@ -91,7 +91,7 @@ export default function HomeScreen(props) {
               inactiveTintColor: "#8B0E04",
               keyboardHidesTabBar: true
             }}>
-            <Tab.Screen name="Home" component={HomeTab} />
+            <Tab.Screen name="Calendar" component={CalendarTab} />
             <Tab.Screen name="Community" component={CommunityTab} />
             <Tab.Screen name="Resources" component={ResourcesTab} />
             <Tab.Screen name="Notifications" component={NotificationsTab} />

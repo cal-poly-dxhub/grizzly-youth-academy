@@ -145,13 +145,13 @@ export default function CalendarComponent(props) {
             selectedDayBackgroundColor: "#0054A4",
             monthTextColor: "#794400"
           }}
-          firstDay={1}
+          firstDay={7}
           markedDates={addSelectedDate()}
           renderArrow={(d) =>
             d === "left" ? (
-              <Entypo name="chevron-left" size={16} color="#794400" />
+              <Entypo name="chevron-left" size={20} color="#794400" />
             ) : (
-              <Entypo name="chevron-right" size={16} color="#794400" />
+              <Entypo name="chevron-right" size={20} color="#794400" />
             )
           }
         />
