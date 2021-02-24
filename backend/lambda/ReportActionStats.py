@@ -35,7 +35,7 @@ def lambda_handler(event, context):
         endDate = datetime.datetime.strptime(event['queryStringParameters']['endDate'], DATE_FORMAT)
     except:
         retval['statusCode'] = '400'
-        retval['body'] = json.dumps( {"message": "Invalid startDate/endDate query string parameters."} )
+        retval['body'] = json.dumps( {"message": "Invalid startDate/endDate query string parameters. format: 'YYYY-MM-DD'"} )
         return retval
     
     start = datetime.datetime.strftime(startDate, DATE_FORMAT)
