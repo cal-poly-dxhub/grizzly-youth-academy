@@ -45,6 +45,7 @@ export async function getCadetInfo() {
         Platoon
         Points
         SharePoints
+        MediaURL
       }
       Ranking {
         ClassRank

@@ -61,7 +61,7 @@ function ProfileComponent() {
   return (
     <ScrollView style={{ padding: 20 }}>
       <View style={{ flexDirection: "row", paddingBottom: 20 }}>
-        <Image style={{ height: 120, width: 120, borderRadius: 10 }} source={DefaultProfilePicture} />
+        <Image style={{ height: 120, width: 120, borderRadius: 10 }} source={Info.MediaURL ? {uri: `${Info.MediaURL}`} : {DefaultProfilePicture}} />
         <View style={{ paddingLeft: 10, justifyContent: "center" }}>
           <Text style={{ paddingBottom: 0, fontWeight: "600", fontSize: 20 }}>
             {`${Info.FirstName} ${Info.LastName}`}
@@ -69,7 +69,7 @@ function ProfileComponent() {
           <Text style={{ fontWeight: "500", color: "#4a4a4a" }}>{`${Info.Platoon} - Class ${Info.Class}`}</Text>
         </View>
       </View>
-      <Text style={{ fontWeight: "600", fontSize: 24, paddingTop: 20, paddingBottom: 10 }}>Rankings</Text>
+      <Text style={{ fontWeight: "600", fontSize: 24, paddingTop: 20, paddingBottom: 10 }}>Overall Rankings</Text>
       <View style={{ flexDirection: "row", paddingBottom: 20 }}>
         <View style={{ alignItems: "center", flex: 1 }}>
           <Text style={{ fontWeight: "700", fontSize: 55, color: "#0054A4" }}>{Info.Points}</Text>
