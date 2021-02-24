@@ -19,3 +19,4 @@ Add and complete the following information to `aws-exports.js`:
     "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS"
 ```
 
+Before initiaiting the app with `expo start`, run `expo upgrade` to update used packages.
