@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "GrizzlyFrontend",
-    "slug": "GrizzlyFrontend",
+    "name": "Grizzly Actions",
+    "slug": "grizzly-actions",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,12 +14,16 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/cal-poly-dxhub/grizzly-youth-academy"
   }
 }
