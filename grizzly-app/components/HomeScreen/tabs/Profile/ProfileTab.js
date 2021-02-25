@@ -2,7 +2,7 @@ import React from "react";
 import { Linking, ScrollView, View, Text, Image, Switch } from "react-native";
 import { Auth } from "aws-amplify";
 import { useSelector, useDispatch } from "react-redux";
-import DefaultProfilePicture from "../../../../assets/defaultProfilePicture.jpg";
+import DefaultProfilePicture from "../../../../assets/GrizzlyDefaultPic.png";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import { createStackNavigator } from "@react-navigation/stack";
