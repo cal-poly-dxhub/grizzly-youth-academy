@@ -21,16 +21,22 @@ This data-driven application is mostly composed of pulling data from a data sour
 User credentials are authenticated through Amazon Cognito, so a user must be created through this service in the dedicated user pool. Furthermore, a record has to be placed in the Cadet DB table that references the Cognito Username.
 
 2. **Staff Assignment**
-In order for users to have access to contact information within the application, it's necessary to import Staff data into `Staff` and make associations between users and Staff members in `CadetToStaff`.
+In order for users to have access to contact information within the application, it's necessary to import Staff data into `Staff` and make associations between each user and a Staff members in `CadetToStaff`.
 
 3. **Notification/Event Creation**
-Notification details are entered into the Notification DB table, and then associations between a Notification and individual Cadets are made within the CadetToNotification table. (This process is the same for Events)
+Notification details are entered into the `Notification` DB table, and then associations between a Notification and individual Cadets are made within the `CadetToNotification` table. (This process is the same for Events with the `Event` and `CadetToEvent` tables)
 
 4. **Generally-Available Template Actions**
 To add a repeating/single-date action to the action templates of all users, a record must be placed in `ActionTemplate` that does not reference a CadetId. Unlike custom actions appearing on a user's calendar, these actions will not appear as 'incomplete' if it becomes overdue.
 
-4. **Resource Creation**
+5. **Resource Creation**
 Resources, which can be provided to Cadet's upon receiving enough points, are added into the `Resource` table. These are categorized by `ResourceCategory`, and must be linked for data integrity purposes.
+
+6. **Profile Pictures**
+Profile pictures are uploaded to a media repository (S3 bucket). To associate a profile picture to a user, the key of the image file should be of the form `Cadet/[FirstName]_[LastName].*`.
+
+7. **Completed Action Reporting**
+The lambda function ReportActionStats generates a CSV file of completed actions over a given date range.
 
 ## Architecture
 The general architecture layout is available [here](https://lucid.app/lucidchart/invitations/accept/e0d4924e-9cd4-42c4-b5cb-019540d7e228).
