@@ -58,9 +58,8 @@ export default function LoadingScreen(props) {
   return (
     <View style={styles.container}>
       <SafeAreaProvider>
-      <Text style={{ fontWeight: "600", fontSize: 24, paddingTop: 100, paddingBottom: 10, paddingLeft: 10, paddingRight: 10}}>Welcome Cadet!</Text>
-      <Text style={{ fontWeight: "400", fontSize: 22, paddingTop: 30, paddingBottom: 10, paddingLeft: 10, paddingRight: 10 }}>Our Mission:</Text>
-      <Text style={{ fontWeight: "400", fontSize: 18, paddingTop: 30, paddingBottom: 10, paddingLeft: 10, paddingRight: 10 }}>The mission of the National Guard Youth ChalleNGe Program is to intervene in and reclaim the lives of 16-18 year old high school dropouts. Graduates leave the program with the values, life skills, education, and self-discipline necessary to succeed as productive citizens.</Text>
+        <Text style={{ fontWeight: "600", fontSize: 24, paddingTop: 100, paddingBottom: 10, paddingLeft: 10, paddingRight: 10}}>Welcome Cadet!</Text>
+        <Text style={{ fontWeight: "400", fontSize: 22, paddingTop: 30, paddingBottom: 10, paddingLeft: 10, paddingRight: 10 }}>No one's going to do your pushups for you!</Text>
       </SafeAreaProvider>
     </View>
   );
